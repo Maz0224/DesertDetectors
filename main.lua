@@ -236,7 +236,7 @@ local function InfiniteMoney()
                     [1] = {0, 0};
                     [2] = "Any";
                 };
-                [3] = {[1] = math.random(10000000, 1000000000000)};
+                [3] = {[1] = math.random(10000000, 1000000000000000000)};
                 [4] = "Return to the cotton fields";
             };
         }
@@ -262,6 +262,28 @@ local Toggle = opTab:CreateToggle({
         end
     end
 }, "InfiniteMoneyToggle")
+
+local Button = opTab:CreateButton({
+    Name = "Max Level + Money",
+    Description = nil, -- Creates A Description For Users to know what the button does (looks bad if you use it all the time),
+    Callback = function()
+            local args = {
+            [1] = {
+                [1] = "Getting Settled";
+                [2] = {
+                    [1] = {0, 0};
+                    [2] = "Any";
+                };
+                [3] = {[1] = 4983930398474646373838290201029293938484488393930392938499596858483839393833738383838374849499339282882929292922882839494938382777448838339};
+                [4] = "Return to the cotton fields";
+            };
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("Give_Quest", 9e9):FireServer(unpack(args))
+    end
+})
+
+opTab:CreateDivider()
 
 local Button = opTab:CreateButton({
     Name = "Buy All Shovels",
@@ -314,3 +336,33 @@ local Button = opTab:CreateButton({
 
     end
 }, "BuyAllDectButton")
+
+local Button = opTab:CreateButton({
+    Name = "Buy All Tractors",
+    Description = nil,
+    Callback = function()
+
+        for i = 1, 10 do
+            
+            local args = {}
+
+            local remote = game:GetService("Players")
+                :WaitForChild("Helpsavedanny", 9e9)
+                :WaitForChild("PlayerGui", 9e9)
+                :WaitForChild("Tractor_UI", 9e9)
+                :WaitForChild("Frame", 9e9)
+                :WaitForChild("Interior", 9e9)
+                :WaitForChild("ScrollingFrame", 9e9)
+                :GetChildren()[i]
+                :WaitForChild("TextButton", 9e9)
+                :WaitForChild("RemoteEvent", 9e9)
+
+            if remote then
+                remote:FireServer(unpack(args))
+            end
+
+            task.wait(0.1) -- small delay between each
+        end
+
+    end
+})
